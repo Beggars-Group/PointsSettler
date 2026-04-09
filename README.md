@@ -1,6 +1,5 @@
 # PointsSettler · 绩律·天衡
 
-[![Version](https://img.shields.io/badge/version-2.6-blue)](https://github.com/Beggars-Group/PointsSettler/releases)
 [![.NET](https://img.shields.io/badge/.NET-10.0-purple)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Website](https://img.shields.io/badge/官网-立即访问-brightgreen)](https://Beggars-Group.github.io/PointsSettler/)
@@ -12,26 +11,27 @@
 
 ---
 
-## ✨ v2.6 更新内容
+## 🎯 主要功能
 
-- 优化输入解析逻辑，支持中文逗号与空格混合分隔。
-- 增强日志记录，包含原始数据、总和及完整计算过程。
-- 调整控制台输出格式，信息展示更加清晰。
-- 修复非数字输入时的异常提示问题。
+- **灵活比率配置**：进退分计算比率自由设定，适配不同评分规则。
+- **批量分组处理**：可连续处理多个班级/小组，数据互不干扰。
+- **智能输入解析**：进退名次支持空格、英文逗号、中文逗号混合输入。
+- **清晰结果展示**：实时显示人数、平均进退、进退分、组积分及最终评比分。
+- **自动日志留存**：每次运行生成带时间戳的 `.txt` 日志，便于核对与归档。
 
 ---
 
-## 📦 下载
+## 📦 下载与安装
 
-从 [Releases](https://github.com/Beggars-Group/PointsSettler/releases) 页面获取最新版本（v2.6）：
+👉 **请前往 [Releases 最新版](https://github.com/Beggars-Group/PointsSettler/releases/latest) 下载。**
 
-| 文件 | 说明 | 运行要求 |
-|------|------|----------|
-| `PointsSettler_v2.6_portable.zip` | 可移植便携版（无运行时） | Windows 10+，需安装 [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) |
-| `PointsSettler_v2.6_setup.exe` | 安装版（无运行时） | Windows 10+，需安装 [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) |
-| `PointsSettler_v2.6_with_runtime_x86.exe` | 独立自包含版（含运行时） | Windows 10+ (32位)，无需安装 .NET，开箱即用 |
+在 Releases 页面中提供了以下变体以满足不同需求：
 
-> 💡 **提示**：前两个版本体积较小，适合已安装 .NET 10 运行时的用户；独立版包含运行时，解压或安装后即可直接运行。
+- **便携版（无运行时）**：需自行安装 [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
+- **安装版（无运行时）**：需自行安装 [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
+- **独立自包含版（含运行时）**：无需额外安装 .NET，开箱即用
+
+> 💡 **提示**：前两种版本体积较小，适合已安装 .NET 10 运行时的用户；独立版包含运行时，解压或安装后即可直接运行。
 
 ---
 
