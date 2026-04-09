@@ -2,31 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>绩律·天衡 v2.6 - 学业进退评分工具</title>
-    <meta name="description" content="绩律·天衡是一款面向教师与教务人员的学业进退评分计算工具。输入进退名次与组积分，按自定义比率生成评比分，并自动保存日志。">
-    <meta name="keywords" content="绩律·天衡, PointsSettler, 进退评分, 学业评分, 丐帮集团">
-    <link rel="icon" href="https://bggp.dpdns.org/xljh.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>绩律·天衡 | 学业进退评分计算工具</title>
     <style>
-        :root {
-            --primary: #39C5BB;
-            --primary-dark: #2a9d8f;
-            --secondary: #e76f51;
-            --dark: #1e1e2f;
-            --light: #f8f9fc;
-            --gray: #6c757d;
-            --success: #28a745;
-            --info: #17a2b8;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-            --card-bg: #ffffff;
-            --text-color: #333;
-            --border-color: rgba(0,0,0,0.08);
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -34,518 +12,259 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-color);
+            font-family: 'Segoe UI', '微软雅黑', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0c1222 100%);
+            color: #eef;
             line-height: 1.6;
             padding: 2rem 1rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .container {
-            max-width: 1000px;
-            width: 100%;
+            max-width: 1100px;
             margin: 0 auto;
+            backdrop-filter: blur(2px);
         }
 
-        /* 页头 */
-        .header {
+        header {
             text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .badge-group {
-            display: inline-block;
-            background: var(--primary-dark);
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
         }
 
         h1 {
             font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, var(--secondary), var(--primary-dark));
+            background: linear-gradient(135deg, #a0e9ff, #6c8eff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
         }
 
-        .version-badge {
+        .version {
+            background: rgba(108, 142, 255, 0.2);
             display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.3rem 1.2rem;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0.5rem 0 1rem;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(108, 142, 255, 0.4);
         }
 
-        .subhead {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .official-links {
+        .badge {
             margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
         }
 
-        .official-link {
-            color: var(--primary-dark);
+        .badge a {
+            color: #ccc;
             text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dotted #6c8eff;
+        }
+
+        .hero {
+            background: rgba(15, 25, 45, 0.6);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(108, 142, 255, 0.3);
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #6c8eff;
+            color: #0a0f1e;
+            font-weight: bold;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin: 0 0.5rem;
+            box-shadow: 0 4px 12px rgba(108, 142, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: #8ca4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(108, 142, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #6c8eff;
+            color: #6c8eff;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(108, 142, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: rgba(20, 30, 50, 0.5);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(108, 142, 255, 0.2);
             transition: 0.2s;
         }
 
-        .official-link:hover {
-            color: var(--secondary);
-            text-decoration: underline;
-        }
-
-        /* 卡片通用 */
-        .card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s;
-        }
-
         .card:hover {
-            transform: translateY(-4px);
+            border-color: #6c8eff;
+            background: rgba(30, 40, 65, 0.6);
         }
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.75rem;
-        }
-
-        .section-title i {
+        .card h3 {
             font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        /* 更新列表 */
-        .update-list {
-            list-style: none;
-            display: grid;
-            gap: 0.8rem;
-        }
-
-        .update-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .update-list li i {
-            color: var(--success);
-            margin-top: 4px;
-        }
-
-        /* 下载表格 */
-        .download-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        .download-table th {
-            text-align: left;
-            padding: 0.8rem 0.5rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .download-table td {
-            padding: 1rem 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            vertical-align: middle;
-        }
-
-        .download-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .file-name {
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .badge-runtime {
-            background: #e9ecef;
-            color: var(--gray);
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
-        .download-btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .download-btn i {
-            margin-right: 6px;
-        }
-
-        .download-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.02);
-            box-shadow: 0 4px 10px rgba(57, 197, 187, 0.3);
-        }
-
-        .download-btn.disabled {
-            background: #ccc;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        .runtime-note {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-top: 0.5rem;
-        }
-
-        /* 使用方法步骤 */
-        .steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .step {
-            flex: 1 1 180px;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 0.5rem;
         }
 
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        /* 计算逻辑 */
-        .formula {
-            background: #f1f9f8;
-            padding: 1.5rem;
-            border-radius: 16px;
-            font-family: 'Consolas', monospace;
-            font-size: 1.1rem;
-            border-left: 5px solid var(--primary);
-            margin: 1rem 0;
-        }
-
-        .formula p {
-            margin: 0.5rem 0;
-        }
-
-        /* 页脚 */
-        .footer {
-            text-align: center;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .footer a {
-            color: var(--primary-dark);
-            text-decoration: none;
-        }
-
-        /* 响应式 */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.3rem;
-            }
-
-            .card {
-                padding: 1.5rem;
-            }
-
-            .download-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-
-            .download-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .section-title {
-                font-size: 1.3rem;
-            }
-        }
-
-        /* 提示框 */
-        .note {
-            background: #fff8e0;
-            border-left: 4px solid var(--warning);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
+        .card p {
+            color: #ccd;
             font-size: 0.95rem;
         }
 
-        .note i {
-            color: var(--warning);
-            margin-right: 8px;
+        .config-section {
+            background: rgba(10, 14, 26, 0.7);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .formula-box {
+            background: #0a0e1a;
+            border-left: 4px solid #6c8eff;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+        }
+
+        .formula-box p {
+            margin: 0.5rem 0;
+        }
+
+        .sys-req {
+            background: rgba(255, 100, 100, 0.1);
+            border-left: 4px solid #ff8888;
+            padding: 0.8rem 1rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(108, 142, 255, 0.2);
+            font-size: 0.85rem;
+            color: #88a;
+        }
+
+        @media (max-width: 700px) {
+            h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .btn { padding: 0.6rem 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 头部 -->
-        <header class="header">
-            <div class="badge-group">
-                <i class="fas fa-users"></i> 丐帮集团第一院 · 物理版象棋开发与研究院™
-            </div>
-            <h1>绩律·天衡</h1>
-            <span class="version-badge">v2.6</span>
-            <p class="subhead">
-                学业进退评分计算工具 — 输入进退名次与组积分，一键生成标准化评比分，日志自动留存。
-            </p>
-            <div class="official-links">
-                <a href="https://Beggars-Group.github.io/PointsSettler/" class="official-link" target="_blank" rel="noopener">
-                    <i class="fas fa-globe"></i> 官网
-                </a>
-                <a href="https://github.com/Beggars-Group/PointsSettler" class="official-link" target="_blank" rel="noopener">
-                    <i class="fab fa-github"></i> GitHub 仓库
-                </a>
-                <a href="https://bggp.dpdns.org/1/pointssettler/" class="official-link" target="_blank" rel="noopener">
-                    <i class="fas fa-link"></i> 丐帮原站镜像
-                </a>
-            </div>
-        </header>
+<div class="container">
+    <header>
+        <h1>📊 绩律·天衡</h1>
+        <div class="version">Version 2.6 | .NET 10 | x64</div>
+        <div class="badge">
+            <a href="#">Windows 10/11</a>
+            <a href="#">MIT 开源</a>
+            <a href="https://bggp.dpdns.org/1/pointssettler/">丐帮原站</a>
+        </div>
+    </header>
 
-        <!-- 更新内容 -->
-        <section class="card">
-            <div class="section-title">
-                <i class="fas fa-sparkles"></i>
-                <h2>✨ v2.6 更新内容</h2>
-            </div>
-            <ul class="update-list">
-                <li><i class="fas fa-check-circle"></i> 优化输入解析逻辑，支持中文逗号与空格混合分隔。</li>
-                <li><i class="fas fa-check-circle"></i> 增强日志记录，包含原始数据、总和及完整计算过程。</li>
-                <li><i class="fas fa-check-circle"></i> 调整控制台输出格式，信息展示更加清晰。</li>
-                <li><i class="fas fa-check-circle"></i> 修复非数字输入时的异常提示问题。</li>
-            </ul>
-        </section>
-
-        <!-- 下载区域 -->
-        <section class="card">
-            <div class="section-title">
-                <i class="fas fa-download"></i>
-                <h2>📦 下载 PointsSettler v2.6</h2>
-            </div>
-
-            <table class="download-table">
-                <thead>
-                    <tr>
-                        <th>文件</th>
-                        <th>说明</th>
-                        <th>运行要求</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="file-name">PointsSettler_v2.6_portable.zip</span></td>
-                        <td>可移植便携版 <span class="badge-runtime">无运行时</span></td>
-                        <td>Windows 10+ · 需安装 .NET 10 Runtime</td>
-                        <td><a href="#" class="download-btn" id="dl-portable"><i class="fas fa-file-zipper"></i> 下载</a></td>
-                    </tr>
-                    <tr>
-                        <td><span class="file-name">PointsSettler_v2.6_setup.exe</span></td>
-                        <td>安装版 <span class="badge-runtime">无运行时</span></td>
-                        <td>Windows 10+ · 需安装 .NET 10 Runtime</td>
-                        <td><a href="#" class="download-btn" id="dl-setup"><i class="fas fa-wrench"></i> 下载</a></td>
-                    </tr>
-                    <tr>
-                        <td><span class="file-name">PointsSettler_v2.6_with_runtime_x86.exe</span></td>
-                        <td>独立自包含版 <span class="badge-runtime">含运行时</span></td>
-                        <td>Windows 10+ (32位) · 无需安装 .NET</td>
-                        <td><a href="#" class="download-btn" id="dl-standalone"><i class="fas fa-bolt"></i> 下载</a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="note">
-                <i class="fas fa-info-circle"></i>
-                <strong>提示：</strong>前两个版本体积较小，适合已安装 <a href="https://dotnet.microsoft.com/download/dotnet/10.0" target="_blank">.NET 10 Runtime</a> 的用户；独立版包含运行时，解压或安装后即可直接运行，无需额外配置。
-            </div>
-            <div class="runtime-note">
-                <i class="fas fa-external-link-alt"></i> .NET 10 Runtime 官方下载：<a href="https://dotnet.microsoft.com/download/dotnet/10.0" target="_blank">https://dotnet.microsoft.com/download/dotnet/10.0</a>
-            </div>
-        </section>
-
-        <!-- 使用方法 -->
-        <section class="card">
-            <div class="section-title">
-                <i class="fas fa-book-open"></i>
-                <h2>🔧 使用方法</h2>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div>启动程序，输入进退分计算比率（如 1.0）</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div>输入组别名称及进退名次（可用空格/逗号/中文逗号分隔）</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div>输入该组积分</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div>查看计算结果，继续下一组或按 q 退出</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <div>程序自动生成 <code>YYYYMMDD_HHMMSS.txt</code> 日志文件</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 计算逻辑 -->
-        <section class="card">
-            <div class="section-title">
-                <i class="fas fa-calculator"></i>
-                <h2>📝 计算逻辑</h2>
-            </div>
-            <div class="formula">
-                <p><strong>平均进退</strong> = 进退名次总和 ÷ 人数</p>
-                <p><strong>进退分</strong> = 平均进退 × 比率</p>
-                <p><strong>评比分</strong> = 进退分 + 组积分</p>
-                <p style="margin-top:0.8rem; font-size:0.9rem; color:var(--gray);">所有结果均保留两位小数。</p>
-            </div>
-        </section>
-
-        <!-- 页脚 -->
-        <footer class="footer">
-            <p>
-                © 2026 丐帮集团第一院 · 物理版象棋开发与研究院™
-                <br>
-                <i class="fas fa-code-branch"></i> 版本 2.6 · 发布于 2026-04-09
-            </p>
-            <p style="margin-top:0.8rem;">
-                <a href="https://github.com/Beggars-Group/PointsSettler"><i class="fab fa-github"></i> GitHub</a> ·
-                <a href="https://bggp.dpdns.org/1/"><i class="fas fa-home"></i> 研究院主页</a>
-            </p>
-        </footer>
+    <div class="hero">
+        <p>🎯 输入进退名次与组积分，一键生成标准化评比分<br>
+        📁 自动保存操作日志，让数据管理井井有条。</p>
+        <div>
+            <a href="https://github.com/Beggars-Group/PointsSettler/releases/latest" class="btn">⬇️ 立即下载</a>
+            <a href="https://github.com/Beggars-Group/PointsSettler" class="btn btn-outline">📂 GitHub 仓库</a>
+        </div>
+        <p style="font-size:0.8rem; margin-top:1rem;">支持 Windows 10 / 11 (64位)，需要 .NET 10 运行时</p>
     </div>
 
-    <script>
-        (function() {
-            // 下载链接配置（请根据实际发布地址修改）
-            const downloadLinks = {
-                portable: 'https://github.com/Beggars-Group/PointsSettler/releases/download/v2.6/PointsSettler_v2.6_portable.zip',
-                setup: 'https://github.com/Beggars-Group/PointsSettler/releases/download/v2.6/PointsSettler_v2.6_setup.exe',
-                standalone: 'https://github.com/Beggars-Group/PointsSettler/releases/download/v2.6/PointsSettler_v2.6_with_runtime_x86.exe'
-            };
+    <div class="features">
+        <div class="card">
+            <h3>⚙️ 灵活比率配置</h3>
+            <p>进退分计算比率自由设定，适配不同评分细则。一次配置，全组统一标准。</p>
+        </div>
+        <div class="card">
+            <h3>📋 批量分组处理</h3>
+            <p>支持连续输入多个班级/小组，互不干扰，高效完成全校评分计算。</p>
+        </div>
+        <div class="card">
+            <h3>🧠 智能输入解析</h3>
+            <p>进退名次支持空格、英文逗号、中文逗号混合输入，粘贴即用，无需整理格式。</p>
+        </div>
+        <div class="card">
+            <h3>📝 日志自动留存</h3>
+            <p>每次运行生成带时间戳的 .txt 日志，完整记录原始数据与计算过程，便于复核。</p>
+        </div>
+    </div>
 
-            // 绑定下载按钮
-            const btnPortable = document.getElementById('dl-portable');
-            const btnSetup = document.getElementById('dl-setup');
-            const btnStandalone = document.getElementById('dl-standalone');
+    <div class="config-section">
+        <h2>📐 计算逻辑</h2>
+        <div class="formula-box">
+            <p><strong>平均进退</strong> = 进退名次总和 ÷ 人数</p>
+            <p><strong>进退分</strong> = 平均进退 × 比率</p>
+            <p><strong>评比分</strong> = 进退分 + 组积分</p>
+        </div>
+        <p style="margin-top:1rem;">✅ 所有计算结果均保留两位小数，日志中同时记录原始数据、总和及完整过程。</p>
+    </div>
 
-            if (btnPortable) {
-                btnPortable.href = downloadLinks.portable;
-            }
-            if (btnSetup) {
-                btnSetup.href = downloadLinks.setup;
-            }
-            if (btnStandalone) {
-                btnStandalone.href = downloadLinks.standalone;
-            }
+    <div class="hero" style="background: rgba(0,0,0,0.4);">
+        <h3 style="margin-bottom: 0.5rem;">🚀 使用流程</h3>
+        <p>1️⃣ 启动程序，输入进退分计算比率（如 1.0）<br>
+        2️⃣ 输入组别名称，再输入该组学生进退名次（可用空格/逗号/中文逗号分隔）<br>
+        3️⃣ 输入该组的组积分<br>
+        4️⃣ 程序显示平均进退、进退分、评比分<br>
+        5️⃣ 可继续下一组，或输入 <code>q</code> 退出<br>
+        6️⃣ 程序在同目录生成 <code>YYYYMMDD_HHMMSS.txt</code> 日志文件</p>
+        <p style="margin-top: 1rem;">💡 所有输入均支持实时纠错，非法字符会友好提示。</p>
+    </div>
 
-            // 若链接未配置则禁用并提示
-            if (!downloadLinks.portable || downloadLinks.portable === '#') {
-                if(btnPortable) {
-                    btnPortable.classList.add('disabled');
-                    btnPortable.href = '#';
-                    btnPortable.title = '下载链接待更新';
-                }
-            }
-            if (!downloadLinks.setup || downloadLinks.setup === '#') {
-                if(btnSetup) {
-                    btnSetup.classList.add('disabled');
-                    btnSetup.href = '#';
-                    btnSetup.title = '下载链接待更新';
-                }
-            }
-            if (!downloadLinks.standalone || downloadLinks.standalone === '#') {
-                if(btnStandalone) {
-                    btnStandalone.classList.add('disabled');
-                    btnStandalone.href = '#';
-                    btnStandalone.title = '下载链接待更新';
-                }
-            }
-        })();
-    </script>
+    <div class="sys-req" style="max-width:700px; margin:1rem auto;">
+        ⚙️ <strong>系统要求</strong>：支持 <strong>Windows 10 / 11 (64位)</strong>。需要安装 <a href="https://dotnet.microsoft.com/download/dotnet/10.0" style="color:#6c8eff;">.NET 10 运行时</a>。
+    </div>
+
+    <footer>
+        <p>绩律·天衡 | 开源学业进退评分工具 | 让评分更简单，让数据更清晰</p>
+        <p>制作单位：丐帮集团第一院·物理版象棋开发与研究院™</p>
+        <p>
+            <a href="https://Beggars-Group.github.io/PointsSettler/" style="color:#6c8eff;">官网</a> · 
+            <a href="https://github.com/Beggars-Group/PointsSettler" style="color:#6c8eff;">GitHub</a> · 
+            <a href="https://bggp.dpdns.org/1/pointssettler/" style="color:#6c8eff;">丐帮原站</a>
+        </p>
+        <p>如果对你有帮助，欢迎给仓库点个 ⭐</p>
+    </footer>
+</div>
 </body>
 </html>
