@@ -173,6 +173,46 @@
             font-size: 0.9rem;
         }
 
+        .download-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .download-table th {
+            text-align: left;
+            padding: 0.8rem 0.5rem;
+            font-weight: 600;
+            color: #a0e9ff;
+            border-bottom: 2px solid #6c8eff;
+        }
+
+        .download-table td {
+            padding: 1rem 0.5rem;
+            border-bottom: 1px solid rgba(108, 142, 255, 0.2);
+            vertical-align: middle;
+        }
+
+        .download-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .file-name {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-weight: 600;
+            color: #a0e9ff;
+        }
+
+        .badge-runtime {
+            background: rgba(108, 142, 255, 0.2);
+            color: #a0e9ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
         footer {
             text-align: center;
             margin-top: 3rem;
@@ -193,11 +233,11 @@
 <div class="container">
     <header>
         <h1>📊 绩律·天衡</h1>
-        <div class="version">Version 2.6 | .NET 10 | x64</div>
+        <div class="version">PointsSettler v2.6 | .NET 10</div>
         <div class="badge">
             <a href="#">Windows 10/11</a>
-            <a href="#">MIT 开源</a>
-            <a href="https://bggp.dpdns.org/1/pointssettler/">丐帮原站</a>
+            <a href="https://github.com/Beggars-Group/PointsSettler/blob/main/LICENSE">MIT 开源</a>
+            <a href="https://Beggars-Group.github.io/PointsSettler/">官方网站</a>
         </div>
     </header>
 
@@ -208,7 +248,7 @@
             <a href="https://github.com/Beggars-Group/PointsSettler/releases/latest" class="btn">⬇️ 立即下载</a>
             <a href="https://github.com/Beggars-Group/PointsSettler" class="btn btn-outline">📂 GitHub 仓库</a>
         </div>
-        <p style="font-size:0.8rem; margin-top:1rem;">支持 Windows 10 / 11 (64位)，需要 .NET 10 运行时</p>
+        <p style="font-size:0.8rem; margin-top:1rem;">前往 GitHub Releases 选择适合你的版本</p>
     </div>
 
     <div class="features">
@@ -228,6 +268,43 @@
             <h3>📝 日志自动留存</h3>
             <p>每次运行生成带时间戳的 .txt 日志，完整记录原始数据与计算过程，便于复核。</p>
         </div>
+    </div>
+
+    <div class="config-section">
+        <h2>📦 可用版本</h2>
+        <p>以下为 v2.6 提供的三种版本，请根据您的系统环境选择：</p>
+        <table class="download-table">
+            <thead>
+                <tr>
+                    <th>文件名</th>
+                    <th>说明</th>
+                    <th>运行要求</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="file-name">PointsSettler_v2.6_portable.zip</span></td>
+                    <td>可移植便携版 <span class="badge-runtime">无运行时</span></td>
+                    <td>Windows 10+，需安装 <a href="https://dotnet.microsoft.com/download/dotnet/10.0" style="color:#6c8eff;">.NET 10 Runtime</a></td>
+                </tr>
+                <tr>
+                    <td><span class="file-name">PointsSettler_v2.6_setup.exe</span></td>
+                    <td>可移植安装版 <span class="badge-runtime">无运行时</span></td>
+                    <td>Windows 10+，需安装 <a href="https://dotnet.microsoft.com/download/dotnet/10.0" style="color:#6c8eff;">.NET 10 Runtime</a></td>
+                </tr>
+                <tr>
+                    <td><span class="file-name">PointsSettler_v2.6_with_runtime_x86.exe</span></td>
+                    <td>独立便携版 <span class="badge-runtime">自包含运行时</span></td>
+                    <td>Windows 10+，32位，已包含 .NET 运行时</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="sys-req">
+            ⚙️ <strong>系统要求</strong>：支持 <strong>Windows 10 / 11</strong>。前两个版本需要安装 <a href="https://dotnet.microsoft.com/download/dotnet/10.0" style="color:#6c8eff;">.NET 10 运行时</a>；独立版无需额外安装，开箱即用。
+        </div>
+        <p style="margin-top:1rem; text-align:center;">
+            <a href="https://github.com/Beggars-Group/PointsSettler/releases/latest" class="btn-outline" style="display:inline-block; padding:0.5rem 1.5rem; border-radius:30px; text-decoration:none;">📦 前往 GitHub Releases 下载</a>
+        </p>
     </div>
 
     <div class="config-section">
@@ -251,17 +328,12 @@
         <p style="margin-top: 1rem;">💡 所有输入均支持实时纠错，非法字符会友好提示。</p>
     </div>
 
-    <div class="sys-req" style="max-width:700px; margin:1rem auto;">
-        ⚙️ <strong>系统要求</strong>：支持 <strong>Windows 10 / 11 (64位)</strong>。需要安装 <a href="https://dotnet.microsoft.com/download/dotnet/10.0" style="color:#6c8eff;">.NET 10 运行时</a>。
-    </div>
-
     <footer>
         <p>绩律·天衡 | 开源学业进退评分工具 | 让评分更简单，让数据更清晰</p>
         <p>制作单位：丐帮集团第一院·物理版象棋开发与研究院™</p>
         <p>
             <a href="https://Beggars-Group.github.io/PointsSettler/" style="color:#6c8eff;">官网</a> · 
-            <a href="https://github.com/Beggars-Group/PointsSettler" style="color:#6c8eff;">GitHub</a> · 
-            <a href="https://bggp.dpdns.org/1/pointssettler/" style="color:#6c8eff;">丐帮原站</a>
+            <a href="https://github.com/Beggars-Group/PointsSettler" style="color:#6c8eff;">GitHub</a>
         </p>
         <p>如果对你有帮助，欢迎给仓库点个 ⭐</p>
     </footer>
